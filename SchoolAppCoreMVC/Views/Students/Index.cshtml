@@ -1,0 +1,43 @@
+
+@model IEnumerable<SchoolAppCoreMVC.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        Create New
+    </a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Enrollment Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.EnrollmentDate</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.StudentId">Edit</a> |
+                    <a asp-action="Details"
+                       asp-route-id="@item.StudentId">Details</a> |
+                    <a asp-action="Delete"
+                       asp-route-id="@item.StudentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
